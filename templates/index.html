@@ -1,0 +1,137 @@
+<html>
+    <head>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+                margin: 0;
+                padding: 0;
+                justify-content: center;
+                align-items: center;
+                color: #076593;
+            }
+            nav{
+            background:#076593;
+            height:100px;
+            width:100%;
+            }
+            label.logo{
+            color:white;
+            font-size: 35px;
+            line-height: 90px;
+            padding: 0 100px;
+            font-weight: bold;
+            word-spacing: 5px;
+            }
+            .main {
+                margin-top: 100px;
+            }
+            .container {
+                background-color: #fff;
+                border-radius: 8px;
+                padding: 30px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                max-width: 400px;
+                width: 90%;
+                margin: auto;
+                margin-top: 30px;
+            }
+            
+            h1 {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            
+            form {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .input-group {
+                position: relative;
+                margin-bottom: 20px;
+            }
+            
+            .inputs {
+                padding-left: 30px;
+            }
+            
+            input {
+                padding: 12px 20px 12px 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 16px;
+                width: 90%;
+            }
+            
+            button[type="submit"] {
+                display: block;
+                width: 100%;
+                padding: 12px 0;
+                font-size: 16px;
+                color: #fff;
+                background-color: #076593;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            button[type="submit"]:hover {
+                background-color: #2293cc;
+            }
+            
+            .links {
+                text-align: center;
+                margin-top: 20px;
+            }
+            
+            .links a {
+                text-decoration: none;
+                color: #076593;
+            }
+            
+            .links a:hover {
+                text-decoration: underline;
+            }
+            .separator {
+                margin: 0 10px;
+            }
+
+            .message{
+                margin-left: 600px;
+            }
+
+            @media screen and (max-width: 480px) {
+                .container {
+                width: 100%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <label class="logo">Sentimental Analysis</label>
+        </nav>
+        <div class="main">
+            <div class="message">
+                {{msg}}
+            </div>
+            <div class="container">
+                <h1>Login</h1>
+                <form action="login" method="POST" autocomplete="off">
+                <div class="inputs">
+                <div class="input-group">
+                    <input type="text" placeholder="Email" name="email" id="email" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" placeholder="Password" name="pwd" id="pwd" required>
+                </div>
+                <button type="submit" name="submit" value="submit">Login</button>
+                </form>
+                <div class="links">
+                    <a href="{{url_for('register')}}">User Register</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>                   

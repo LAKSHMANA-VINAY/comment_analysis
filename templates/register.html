@@ -1,0 +1,188 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+            align-items: center;
+            color: #076593;
+        }
+
+        nav {
+            background: #076593;
+            height: 100px;
+            width: 100%;
+        }
+
+        label.logo {
+            color: white;
+            font-size: 35px;
+            line-height: 90px;
+            padding: 0 100px;
+            font-weight: bold;
+            word-spacing: 5px;
+        }
+
+        .lead-main {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .lead-main h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .inputs {
+            padding: 10px 0;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #5b9bd5;
+        }
+
+        .input-group input::placeholder {
+            color: #999;
+        }
+
+        .input-group input[type="text"] {
+            text-transform: none; /* Change to 'none' for case sensitivity */
+        }
+
+        .input-group input[type="password"] {
+            font-family: inherit;
+        }
+
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            font-size: 16px;
+            color: #fff;
+            background-color: #076593;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #2293cc;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: #076593;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .message {
+            margin-left: 120px;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <label class="logo">Sentimental Analysis</label>
+</nav>
+<div class="lead-main">
+    <div class="message">
+        {{msg}}
+    </div>
+    <h1>User Registration</h1>
+    <form onsubmit="return validateDetails()" action="user_register" method="POST" autocomplete="off">
+        <div class="inputs">
+            <div class="input-group">
+                <input type="email" placeholder="Email" name="email" id="email" required>
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Password" name="password" id="password" required>
+            </div>
+            <div class="input-group">
+                <input type="text" placeholder="Instagram" name="instagram" id="instagram" required>
+            </div>
+            <div class="input-group">
+                <input type="text" placeholder="Facebook" name="facebook" id="facebook" required>
+            </div>
+            <div class="input-group">
+                <input type="text" placeholder="Twitter" name="twitter" id="twitter" required>
+            </div>
+        </div>
+        <button type="submit" name="submit" value="submit">Register</button>
+    </form>
+    <div class="links">
+        <a href="{{url_for('home')}}">Login</a>
+    </div>
+</div>
+<script>
+    function validateDetails() {
+        var email = document.getElementById("email").value.trim();
+        var password = document.getElementById("password").value.trim();
+        var instagram = document.getElementById("instagram").value.trim();
+        var facebook = document.getElementById("facebook").value.trim();
+        var twitter = document.getElementById("twitter").value.trim();
+
+
+        var instagramRegex = /^[a-zA-Z0-9\s!@#$%^&*()-_=+[{\]}\\|;:'",<.>/?]+$/;
+        if (!instagramRegex.test(instagram) || instagram.length === 0) {
+            alert("Please enter a valid Instagram username with characters, spaces, and special characters only.");
+            return false;
+        }
+
+        var facebookRegex = /^[a-zA-Z0-9\s!@#$%^&*()-_=+[{\]}\\|;:'",<.>/?]+$/;
+        if (!facebookRegex.test(facebook) || facebook.length === 0) {
+            alert("Please enter a valid Facebook username with characters, spaces, and special characters only.");
+            return false;
+        }
+
+        var twitterRegex = /^[a-zA-Z0-9\s!@#$%^&*()-_=+[{\]}\\|;:'",<.>/?]+$/;
+        if (!twitterRegex.test(twitter) || twitter.length === 0) {
+            alert("Please enter a valid Twitter username with characters, spaces, and special characters only.");
+            return false;
+        }
+
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email) || !email.endsWith('@gmail.com')) {
+            alert("Please enter a valid Gmail address.");
+            return false;
+        }
+
+        var passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{10,}$/;
+        if (!passwordRegex.test(password)) {
+            alert("Please enter a valid password with at least 10 characters, including at least one letter, one number, and one special character.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+</body>
+</html>
